@@ -29,8 +29,8 @@ export function PostList() {
             <Paragraph>hi there alex</Paragraph>
       
             {posts.map((post) => (
-            //pass information from one component to another
-            <Post post ={post}/>
+                //pass information from one component to another
+                <Post key={post.id} post={post} marginBottom={0} isLiked={false}/>
          ))}
         </YStack>
     );
