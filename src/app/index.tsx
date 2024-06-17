@@ -1,7 +1,7 @@
 import { ScrollView } from 'tamagui';
 import { PostList } from '../components/PostList';
 
-
+//index means home page
 export default function App() {
   
   return (
