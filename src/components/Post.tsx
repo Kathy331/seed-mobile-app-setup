@@ -42,9 +42,8 @@ export function Post(props: Props) {
               </Button>
 
             </XStack>
-
+            
             <Paragraph p={10}>{post.data().caption} </Paragraph>
-            <Button>Like</Button>
 
         </YStack>
    
