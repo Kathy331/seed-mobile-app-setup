@@ -10,7 +10,6 @@ export default function App() {
       <Stack.Screen 
         options={{
           title: 'Home',
-          
         }}
       />
 

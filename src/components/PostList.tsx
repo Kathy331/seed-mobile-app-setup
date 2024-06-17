@@ -23,9 +23,10 @@ export function PostList() {
 
     //view being displayed
     //map through the posts array and display the caption
+    //individual components can be added to the y stack too <Paragraph>home</Paragraph>
     return (
         <YStack gap={10}>
-            <Paragraph>home</Paragraph>
+
 
             {posts.map((post) => (
                 //pass information from one component to another

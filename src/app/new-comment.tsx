@@ -15,7 +15,7 @@ export default function NewCommentForm(){
       />
 
       <YStack p={50}>
-        <Paragraph>new comment form go here..</Paragraph>
+        <Paragraph>New Comments here...</Paragraph>
         
       </YStack>
 

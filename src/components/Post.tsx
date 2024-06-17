@@ -19,8 +19,13 @@ export function Post(props: Props) {
          //need a key for array
          //don't forget to import Image
          //button with a heart--> <Button><Heart/></Button>
-        <YStack key={post.id} gap={10}>
-            <Image width="100%" aspectRatio={1} source={{uri: String(post.data().imageUrl)}} />
+        <YStack key={post.id} gap={5}>
+            <Image 
+              
+              width="100%" 
+              aspectRatio={1} 
+              source={{uri: String(post.data().imageUrl)}} 
+            />
 
             <XStack p={10} gap={1}> 
 
@@ -42,7 +47,7 @@ export function Post(props: Props) {
               </Button>
 
             </XStack>
-            
+
             <Paragraph p={10}>{post.data().caption} </Paragraph>
 
         </YStack>
