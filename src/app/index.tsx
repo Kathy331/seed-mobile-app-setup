@@ -1,13 +1,13 @@
-import { ScrollView } from 'tamagui';
-import { PostList } from '../components/PostList';
 import { Stack } from 'expo-router';
+import { ScrollView } from 'tamagui';
+
+import { PostList } from '../components/PostList';
 
 //index means home page
 export default function App() {
-  
   return (
     <>
-      <Stack.Screen 
+      <Stack.Screen
         options={{
           title: 'Home',
         }}
@@ -16,8 +16,6 @@ export default function App() {
       <ScrollView flex={1}>
         <PostList />
       </ScrollView>
-
     </>
-    
   );
 }
