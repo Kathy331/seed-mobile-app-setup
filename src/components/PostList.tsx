@@ -1,8 +1,7 @@
 //could called "PostListView"
 
 import { collection, getDocs, QueryDocumentSnapshot } from 'firebase/firestore/lite';
-import { Button, Paragraph, YStack, Image } from 'tamagui';
-
+import { Paragraph, YStack} from 'tamagui';
 import { db } from '../support/firebase';
 import { useEffect, useState } from 'react';
 import { Post } from './Post';
@@ -26,8 +25,8 @@ export function PostList() {
     //map through the posts array and display the caption
     return (
         <YStack gap={10}>
-            <Paragraph>hi there alex</Paragraph>
-      
+            <Paragraph>home</Paragraph>
+
             {posts.map((post) => (
                 //pass information from one component to another
                 <Post key={post.id} post={post} marginBottom={0} isLiked={false}/>
