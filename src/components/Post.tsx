@@ -2,7 +2,7 @@ import { Heart, MessageSquare } from '@tamagui/lucide-icons';
 import { router } from 'expo-router';
 import { QueryDocumentSnapshot } from 'firebase/firestore/lite';
 import { Alert } from 'react-native';
-import { Button, Paragraph, YStack, Image, XStack } from 'tamagui';
+import { Button, Paragraph, YStack, Image, XStack, View } from 'tamagui';
 
 //different Props
 type Props = {
@@ -20,35 +20,40 @@ export function Post(props: Props) {
          //don't forget to import Image
          //button with a heart--> <Button><Heart/></Button>
         <YStack key={post.id} gap={5}>
+
+          <View style={{borderRadius: 20, overflow: 'hidden'}}>
             <Image 
-              
               width="100%" 
               aspectRatio={1} 
               source={{uri: String(post.data().imageUrl)}} 
             />
+          </View>
 
-            <XStack p={10} gap={1}> 
+          <XStack p={5} gap={10}> 
 
-              <Button 
-                chromeless 
-                onPress={()=> {
-                Alert.alert('You liked this post');
+            <Button 
+              padding={5}
+              chromeless 
+              onPress={()=> {
+              Alert.alert('You liked this post');
+            }}>
+            <Heart/>
+            </Button>
+
+
+            <Button 
+              padding={5}
+              chromeless
+              onPress={() => {
+                router.navigate('/new-comment');
               }}>
-              <Heart/>
-              </Button>
 
-              <Button 
-                chromeless
-                onPress={() => {
-                  router.navigate('/new-comment');
-                }}>
+            <MessageSquare/>
+            </Button>
 
-              <MessageSquare/>
-              </Button>
+          </XStack>
 
-            </XStack>
-
-            <Paragraph p={10}>{post.data().caption} </Paragraph>
+          <Paragraph p={10}>{post.data().caption} </Paragraph>
 
         </YStack>
    
