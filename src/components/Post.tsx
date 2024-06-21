@@ -1,12 +1,13 @@
 import { Alert } from 'react-native';
-import { Heart, MessageSquare } from '@tamagui/lucide-icons';
+import { Heart, MessageSquare, Star } from '@tamagui/lucide-icons';
 import { router } from 'expo-router';
 import { QueryDocumentSnapshot } from 'firebase/firestore/lite';
 import { Button, Image, Paragraph, View, XStack, YStack } from 'tamagui';
+import { useState } from 'react';
 
 //different Props
 type Props = {
-  marginBottom: number;
+
   isLiked: boolean;
   post: QueryDocumentSnapshot;
 };
@@ -14,6 +15,7 @@ type Props = {
 //receive the post from the PostList component
 export function Post(props: Props) {
   const post = props.post;
+  const [isHeartPressed, setIsHeartPressed] = useState(props.isLiked);
 
   return (
     //need a key for array
@@ -33,11 +35,16 @@ export function Post(props: Props) {
           padding={5}
           chromeless
           onPress={() => {
-            Alert.alert('You liked this post');
+            setIsHeartPressed(!isHeartPressed);
+            Alert.alert(isHeartPressed ? 'You unliked this post' : 'You liked this post');
           }}
         >
-          <Heart />
+          <Heart 
+          color = {isHeartPressed ? '#F02641' : 'black'}
+          fill ={isHeartPressed ? '#F02641' : 'transparent'} />
         </Button>
+        
+        
 
         <Button
           padding={5}
@@ -48,6 +55,18 @@ export function Post(props: Props) {
         >
           <MessageSquare />
         </Button>
+
+        <Button
+          padding={5}
+          chromeless
+          onPress={() => {
+            router.navigate('/new-comment');
+          }}
+        >
+          <Star fill={'#EFB5D5'} />
+        </Button>
+
+        <Paragraph padding={5} justifyContent='center'>🌶️</Paragraph>
       </XStack>
 
       <Paragraph p={10}>{post.data().caption} </Paragraph>

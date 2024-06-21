@@ -6,7 +6,7 @@ import {
   getDocs,
   QueryDocumentSnapshot,
 } from 'firebase/firestore/lite';
-import { Paragraph, YStack } from 'tamagui';
+import { YStack } from 'tamagui';
 
 import { db } from '../support/firebase';
 import { Post } from './Post';
@@ -33,8 +33,9 @@ export function PostList() {
     <YStack gap={10}>
       {posts.map((post) => (
         //pass information from one component to another
-        <Post key={post.id} post={post} marginBottom={0} isLiked={false} />
+        <Post key={post.id} post={post} isLiked={false} />
       ))}
     </YStack>
   );
+
 }

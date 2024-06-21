@@ -1,4 +1,4 @@
-import { router, Stack } from 'expo-router';
+import { Stack } from 'expo-router';
 import { Paragraph, YStack } from 'tamagui';
 
 //<Button onPress={() => router.navigate('/')}>Go back</Button>
