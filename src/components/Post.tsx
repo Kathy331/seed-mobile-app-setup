@@ -37,15 +37,12 @@ export function Post(props: Props) {
           onPress={() => {
             setIsHeartPressed(!isHeartPressed);
             Alert.alert(isHeartPressed ? 'You unliked this post' : 'You liked this post');
-          }}
-        >
+          }}>
           <Heart 
           color = {isHeartPressed ? '#F02641' : 'black'}
           fill ={isHeartPressed ? '#F02641' : 'transparent'} />
         </Button>
         
-        
-
         <Button
           padding={5}
           chromeless

@@ -21,11 +21,16 @@ export function PostList() {
     const getPosts = async () => {
       const postRef = collection(db, 'posts');
       const postsSnapshot = await getDocs(postRef);
+
       setPosts(postsSnapshot.docs);
     };
     void getPosts();
+
   }, []);
 
+  
+
+  
   //view being displayed
   //map through the posts array and display the caption
   //individual components can be added to the y stack too <Paragraph>home</Paragraph>
@@ -33,6 +38,7 @@ export function PostList() {
     <YStack gap={10}>
       {posts.map((post) => (
         //pass information from one component to another
+        //isLiked is false because the user has not liked the post yet
         <Post key={post.id} post={post} isLiked={false} />
       ))}
     </YStack>
