@@ -11,6 +11,12 @@ import { YStack } from 'tamagui';
 import { db } from '../support/firebase';
 import { Post } from './Post';
 
+type PostData = {
+  id: string;
+  comments: DocumentData[];
+  [key: string]: any; // for other properties of the post
+};
+
 export function PostList() {
   //save it in a useState to keep track of the posts (array of posts)
   //make sure to import QueryDocumentSnapshot
@@ -22,7 +28,16 @@ export function PostList() {
       const postRef = collection(db, 'posts');
       const postsSnapshot = await getDocs(postRef);
 
-      setPosts(postsSnapshot.docs);
+      const postsWithComments = await Promise.all(
+        postsSnapshot.docs.map(async (post) => {
+          const commentsRef = collection(postRef, post.id, 'comments');
+          const commentsSnapshot = await getDocs(commentsRef);
+          return { ...post.data(), comments: commentsSnapshot.docs.map(doc => doc.data()) };
+        })
+      );
+
+
+      setPosts(postsWithComments);
     };
     void getPosts();
 
@@ -39,7 +54,8 @@ export function PostList() {
       {posts.map((post) => (
         //pass information from one component to another
         //isLiked is false because the user has not liked the post yet
-        <Post key={post.id} post={post} isLiked={false} />
+        const postData = post;
+        <Post key={post.id} post={post} isLiked={false} comments={postData.comments}/>
       ))}
     </YStack>
   );

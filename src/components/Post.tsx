@@ -10,6 +10,7 @@ type Props = {
 
   isLiked: boolean;
   post: QueryDocumentSnapshot;
+  comments: Array<QueryDocumentSnapshot>;
 };
 
 //receive the post from the PostList component
